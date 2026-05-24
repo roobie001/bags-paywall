@@ -56,7 +56,10 @@ export default function PayPage() {
 
     try {
       const { solana } = window as any;
-      const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+      const connection = new Connection(
+        process.env.NEXT_PUBLIC_HELIUS_RPC!,
+        "confirmed",
+      );
       const fromPubkey = new PublicKey(walletAddress);
       const toPubkey = new PublicKey(paywall.creator_wallet);
 
@@ -104,8 +107,7 @@ export default function PayPage() {
         className="min-h-screen flex items-center justify-center text-white"
         style={{
           backgroundColor: "#0a0a0a",
-          backgroundImage:
-            "radial-gradient(#1a1a1a 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(#1a1a1a 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       >
@@ -120,8 +122,7 @@ export default function PayPage() {
         className="min-h-screen flex items-center justify-center text-white"
         style={{
           backgroundColor: "#0a0a0a",
-          backgroundImage:
-            "radial-gradient(#1a1a1a 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(#1a1a1a 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       >
@@ -138,8 +139,7 @@ export default function PayPage() {
       className="min-h-screen bg-black flex flex-col items-center justify-center px-4 text-white"
       style={{
         backgroundColor: "#0a0a0a",
-        backgroundImage:
-          "radial-gradient(#1a1a1a 1px, transparent 1px)",
+        backgroundImage: "radial-gradient(#1a1a1a 1px, transparent 1px)",
         backgroundSize: "24px 24px",
       }}
     >
@@ -162,7 +162,7 @@ export default function PayPage() {
 
           <div className="mb-6 flex items-center justify-between border-b border-gray-800 pb-6">
             <span className="text-sm text-gray-400">Network</span>
-            <span className="text-sm text-gray-300">Solana Devnet</span>
+            <span className="text-sm text-gray-300">Solana</span>
           </div>
 
           <div className="flex items-center justify-between">
@@ -221,8 +221,8 @@ export default function PayPage() {
         )}
 
         <p className="mt-6 text-center text-xs text-gray-600">
-          Powered by <span className="text-purple-400">BagsPay</span> &middot;
-          {" "}Secured by Solana
+          Powered by <span className="text-purple-400">BagsPay</span> &middot;{" "}
+          Secured by Solana
         </p>
       </div>
     </main>
